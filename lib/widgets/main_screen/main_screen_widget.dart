@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:themoviedb/widgets/movie_list/movie_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
-  MainScreenWidget({Key? key}) : super(key: key);
+  const MainScreenWidget({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MainScreenWidgetState createState() => _MainScreenWidgetState();
 }
 
@@ -25,10 +26,9 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
       body: IndexedStack(
         index: _selectedTab,
         children: [
-          Text('Новости'),
-          MovieListWidget(),
-          Text('Фильмы'),
-          Text('Сериалы'),
+          const Text('Новости'),
+          const MovieListWidget(),
+          const Text('Сериалы'),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

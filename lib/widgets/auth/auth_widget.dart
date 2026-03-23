@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:themoviedb/Theme/app_button_style.dart';
-import 'package:themoviedb/widgets/main_screen/main_screen_widget.dart';
 
 class AuthWidget extends StatefulWidget {
   const AuthWidget({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AuthWidgetState createState() => _AuthWidgetState();
 }
 

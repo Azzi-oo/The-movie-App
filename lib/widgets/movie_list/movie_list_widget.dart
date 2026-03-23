@@ -15,7 +15,7 @@ class Movie {
 }
 
 class MovieListWidget extends StatefulWidget {
-  MovieListWidget({super.key});
+  const MovieListWidget({super.key});
 
   @override
   State<MovieListWidget> createState() => _MovieListWidgetState();
@@ -93,23 +93,23 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           itemCount: _filteredMovies.length,
           itemExtent: 163,
           itemBuilder: (context, index) {
-            final movie = _movies[index];
+            final movie = _filteredMovies[index];
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Row(
-                children: [
-                  Container(
+              child: Material(
+                color: Colors.white,
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                elevation: 2,
+                shadowColor: Colors.black.withValues(alpha: 0.1),
+                child: InkWell(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  onTap: () {},
+                  child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black.withOpacity(0.2)),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 8,
-                          offset: Offset(0, 2),
-                        ),
-                      ],
+                      border: Border.all(
+                        color: Colors.black.withValues(alpha: 0.2),
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     clipBehavior: Clip.hardEdge,
                     child: Row(
@@ -119,21 +119,23 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               Text(
                                 movie.title,
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 movie.time,
-                                style: TextStyle(color: Colors.grey),
+                                style: const TextStyle(color: Colors.grey),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               Text(
                                 movie.description,
                                 maxLines: 2,
@@ -142,20 +144,11 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                             ],
                           ),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                       ],
                     ),
                   ),
-                  Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      onTap: () {
-                        print('11');
-                      },
-                    ),
-                  ),
-                ],
+                ),
               ),
             );
           },
@@ -167,7 +160,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
             decoration: InputDecoration(
               labelText: 'Поиск',
               filled: true,
-              fillColor: Colors.white.withAlpha(235),
+              fillColor: Colors.white.withValues(alpha: 0.92),
               border: OutlineInputBorder(),
             ),
           ),
