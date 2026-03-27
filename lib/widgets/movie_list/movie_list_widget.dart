@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Movie {
+  final int id;
   final String imageName;
   final String title;
   final String time;
   final String description;
 
   Movie({
+    required this.id,
     required this.imageName,
     required this.title,
     required this.time,
@@ -24,12 +26,14 @@ class MovieListWidget extends StatefulWidget {
 class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
+      id: 1,
       imageName: '',
       title: 'Смертельная битва',
       time: 'April 7, 2026',
       description: 'Washed-up MMA fighter Cole Young, unaware of his heritage',
     ),
     Movie(
+      id: 2,
       imageName: '',
       title: 'Прибытие',
       time: 'March 14, 2026',
@@ -37,6 +41,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'Washed-up MMA fighter Cole Young, unaware of his heritage hfghgfg sugus gsrugr',
     ),
     Movie(
+      id: 3,
       imageName: '',
       title: 'Назад в будущее 1',
       time: 'March 23, 2026',
@@ -44,6 +49,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'Washed-up MMA fighter Cole Young, unaware of his heritage og the Great Britain in the capital London',
     ),
     Movie(
+      id: 4,
       imageName: '',
       title: 'Назад в будущее 2',
       time: 'March 23, 2026',
@@ -51,6 +57,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           'Washed-up MMA fighter Cole Young, unaware of his heritage og the Great Britain in the capital London',
     ),
     Movie(
+      id: 5,
       imageName: '',
       title: 'Назад в будущее 3',
       time: 'March 23, 2026',
@@ -83,6 +90,14 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     _searchController.addListener(_searchMovies);
   }
 
+  void _onMovieTap(int index) {
+    final movie = _filteredMovies[index];
+    Navigator.of(context).pushNamed(
+      '/main_screen/movie_details',
+      arguments: movie.id,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -103,7 +118,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                 shadowColor: Colors.black.withValues(alpha: 0.1),
                 child: InkWell(
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  onTap: () {},
+                  onTap: () => _onMovieTap(index),
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
